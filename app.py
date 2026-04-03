@@ -178,6 +178,7 @@ if uploaded_file:
 
         #average response time
         response_time= helper.avg_response_time(selected_user, df)
+        response_time= response_time/60
         with col2:
             st.header('responses')
             fastest= response_time.idxmin()
@@ -199,6 +200,20 @@ if uploaded_file:
         with col1:
             fig, ax= plt.subplots()
             ax.bar(sentiments.index, sentiments.values)
+            response_time= helper.avg_response_time(selected_user, df)
+        with col2:
+            st.header('responses')
+            fastest= response_time.idxmin()
+            slowest= response_time.idxmax()
+            st.subheader(f'fastest response: {fastest}')
+            st.subheader(f'slowest response: {slowest}')
+
+        with col3:
+            st.header('average response time')
+            fig, ax= plt.subplots()
+            ax.bar(response_time.index, response_time.values)
+            st.pyplot(fig)
+            plt.xticks(rotation = 'vertical')
             st.pyplot(fig)
         with col2:
             st.table(sentiments)
