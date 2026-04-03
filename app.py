@@ -4,7 +4,10 @@ import preprocessor
 import helper
 import matplotlib.pyplot as plt
 import seaborn as sns
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="WhatzInsightz",
+    layout="wide"
+)
 
 st.title('WhatsApp Chat Analyzer')
 st.text('Open sidebar to upload files')
