@@ -38,6 +38,7 @@ def most_busy_users(df):
 
 #most common words
 def most_common_words(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     with open ('stop_hinglish.txt', 'r') as f:
         stop_words= f.read()
     if selected_user != 'overall':
@@ -73,6 +74,7 @@ def emoji_count(selected_user, df):
 
 #display the busy months yearwise
 def monthly_timeline(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
@@ -96,6 +98,7 @@ def daily_timeline(selected_user, df):
 
 #which day of the week is the busiest
 def most_busy_day(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
@@ -105,6 +108,7 @@ def most_busy_day(selected_user, df):
 
 #which month of the year is the busiest
 def most_busy_month(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
@@ -114,6 +118,7 @@ def most_busy_month(selected_user, df):
 
 #most busy hours
 def most_busy_hours(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
@@ -125,6 +130,7 @@ def most_busy_hours(selected_user, df):
 
 #who starts the conversation
 def starts_conversation(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
@@ -138,6 +144,7 @@ def starts_conversation(selected_user, df):
 
 #average response time
 def avg_response_time(selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
@@ -152,6 +159,7 @@ def avg_response_time(selected_user, df):
 
 #sentiment analysis
 def sentiment_analysis (selected_user, df):
+    df = df[df['user'] != 'group_notification']
     if selected_user != 'overall':
         df = df[df['user'] == selected_user]
 
