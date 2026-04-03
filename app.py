@@ -21,7 +21,6 @@ if uploaded_file:
 
     st.header('your messages sample')
     df= preprocessor.preprocess(data)
-    df = df[df['user'] != 'group_notification']
     st.table(df[['user', 'message']].head(), hide_index=True)
 
 
