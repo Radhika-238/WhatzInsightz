@@ -166,69 +166,69 @@ if uploaded_file:
         ax.tick_params(axis='x', labelsize=3)
         ax.tick_params(axis='y', labelsize=3)
         st.pyplot(fig)
-
-# ===============================
-# WHO STARTS + RESPONSE TIME
-# ===============================
-
-col1, col2, col3 = st.columns(3)
-
-# 🔹 Who starts conversation
-with col1:
-    st.header('Who starts the conversation')
-    starter_counts = helper.starts_conversation(selected_user, df)
-    st.dataframe(starter_counts)
-
-# 🔹 Response insights
-response_time = helper.avg_response_time(selected_user, df)
-
-if not response_time.empty:
-    response_time = response_time / 60  # convert to minutes
-
-    with col2:
-        st.header('Responses')
-
-        fastest = response_time.idxmin()
-        slowest = response_time.idxmax()
-
-        st.subheader(f'Fastest responder: {fastest}')
-        st.subheader(f'Slowest responder: {slowest}')
-
-    with col3:
-        st.header('Average Response Time (minutes)')
-
-        fig, ax = plt.subplots(figsize=(8, 4))
-        ax.bar(response_time.index, response_time.values)
-
-        ax.set_ylabel("Minutes")
-        plt.xticks(rotation=45)
-
-        st.pyplot(fig, use_container_width=True)
-
-else:
-    st.warning("Not enough data for response time analysis")
-
-
-# ===============================
-# SENTIMENT ANALYSIS
-# ===============================
-
-st.header('Sentiment Analysis')
-
-sentiments = helper.sentiment_analysis(selected_user, df)
-
-col1, col2 = st.columns(2)
-
-# 🔹 Bar chart
-with col1:
-    fig, ax = plt.subplots(figsize=(6, 4))
-    ax.bar(sentiments.index, sentiments.values)
-
-    ax.set_ylabel("Count")
-    plt.xticks(rotation=45)
-
-    st.pyplot(fig, use_container_width=True)
-
-# 🔹 Table
-with col2:
-    st.dataframe(sentiments)
+        
+        # ===============================
+        # WHO STARTS + RESPONSE TIME
+        # ===============================
+        
+        col1, col2, col3 = st.columns(3)
+        
+        # 🔹 Who starts conversation
+        with col1:
+            st.header('Who starts the conversation')
+            starter_counts = helper.starts_conversation(selected_user, df)
+            st.dataframe(starter_counts)
+        
+        # 🔹 Response insights
+        response_time = helper.avg_response_time(selected_user, df)
+        
+        if not response_time.empty:
+            response_time = response_time / 60  # convert to minutes
+        
+            with col2:
+                st.header('Responses')
+        
+                fastest = response_time.idxmin()
+                slowest = response_time.idxmax()
+        
+                st.subheader(f'Fastest responder: {fastest}')
+                st.subheader(f'Slowest responder: {slowest}')
+        
+            with col3:
+                st.header('Average Response Time (minutes)')
+        
+                fig, ax = plt.subplots(figsize=(8, 4))
+                ax.bar(response_time.index, response_time.values)
+        
+                ax.set_ylabel("Minutes")
+                plt.xticks(rotation=45)
+        
+                st.pyplot(fig, use_container_width=True)
+        
+        else:
+            st.warning("Not enough data for response time analysis")
+        
+        
+        # ===============================
+        # SENTIMENT ANALYSIS
+        # ===============================
+        
+        st.header('Sentiment Analysis')
+        
+        sentiments = helper.sentiment_analysis(selected_user, df)
+        
+        col1, col2 = st.columns(2)
+        
+        # 🔹 Bar chart
+        with col1:
+            fig, ax = plt.subplots(figsize=(6, 4))
+            ax.bar(sentiments.index, sentiments.values)
+        
+            ax.set_ylabel("Count")
+            plt.xticks(rotation=45)
+        
+            st.pyplot(fig, use_container_width=True)
+        
+        # 🔹 Table
+        with col2:
+            st.dataframe(sentiments)
