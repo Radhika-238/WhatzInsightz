@@ -35,3 +35,9 @@ This project allows users to upload WhatsApp chat data and explore communication
 3. The app processes and visualizes insights instantly
 
 ## Project Structure
+
+├── app.py
+├── helper.py
+├── preprocessor.py
+├── stop_hinglish.txt
+├── requirements.txt
