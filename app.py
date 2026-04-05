@@ -34,7 +34,7 @@ if uploaded_file:
     if st.sidebar.button('Show Analysis'):
         st.title('top statistics')
         num_messages, words, media_count, links, stickers = helper.fetch_stats(selected_user, df)
-        col1, col2, col3, col4, col5 = st.columns(5)
+        col1, col2, col3, col4 = st.columns(4)
 
         with col1:
             st.subheader('Total Messages')
@@ -51,10 +51,6 @@ if uploaded_file:
         with col4:
             st.subheader('urls shared')
             st.text(links)
-
-        with col5:
-            st.subheader('stickers count')
-            st.text(stickers)
 
 
 
